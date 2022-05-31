@@ -6,22 +6,15 @@
 </head>
 <body>
 	<form th:action="@{/buffet}" method="post" th:object="${buffet}">
+		<div th:if="${#fields.hasGlobalErrors()}"> 
+			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">Errore Globale</p>
+		</div>
 		<div>
 			nome del buffet: <input type="text" th:field="*{nome}" />
 		</div>
 		<div>
 			descrizione: <input type="text" th:field="*{descrizione}" />
 		</div>
-		<div>
-			nome dello chef: <input type="text" th:field="*{chef.nome}" />
-		</div>
-		<div>
-			cognome dello chef: <input type="text" th:field="*{chef.cognome}" />
-		</div>
-		<div>
-			nazione dello chef: <input type="text" th:field="*{chef.nazione}" />
-		</div>
-		
 		<div>
 			<button type="submit">Conferma</button>
 		</div>

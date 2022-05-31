@@ -13,15 +13,19 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.demo.controller.validator.BuffetValidator;
 import com.example.demo.model.Buffet;
 import com.example.demo.service.BuffetService;
 @Controller
 public class BuffetController {
 	@Autowired
 	private BuffetService buffetService;
+	@Autowired
+	private BuffetValidator validator;
 		
 	@PostMapping("/buffet")
 	public String addBuffet(@Valid @ModelAttribute("buffet") Buffet buffet, BindingResult bindingResult, Model model) {
+		validator.validate(buffet, bindingResult);
 		if(!bindingResult.hasErrors()) {
 			buffetService.save(buffet);
 			model.addAttribute("buffet", buffet);

@@ -10,10 +10,6 @@
 		<div>
 			<div>Nome buffet:<span th:text="${buffet.nome}"></span></div>
 			<div>Descrizione:<span th:text="${buffet.descrizione}"></span></div>
-			<div>Nome dello Chef:<span th:text="${buffet.chef.nome}"></span></div>
-			<div>Cognome dello Chef:<span th:text="${buffet.chef.cognome}"></span></div>
-			<a href = "chef.html" th:href = "@{'/chef' + '/' + ${chef.id}}"
-				th:text = "dettagli">Dettagli chef</a>
 		</div>
 	</div>
 	<footer>

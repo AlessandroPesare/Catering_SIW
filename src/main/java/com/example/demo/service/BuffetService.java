@@ -12,24 +12,34 @@ import com.example.demo.model.Buffet;
 import com.example.demo.repository.BuffetRepository;
 
 @Service
-public class BuffetService {
+public class BuffetService {	
 	@Autowired
 	private BuffetRepository buffetRepo;
-
+	
+	//ci pensa springboot
 	@Transactional
 	public void save(Buffet buffet) {
 		buffetRepo.save(buffet);
 	}
-
+	
+	//interrogazione non è transazionale
 	public Buffet findById(Long id) {
 		return buffetRepo.findById(id).get();
 	}
-
+	
 	public List<Buffet> findAll(){
 		List<Buffet> buffet = new ArrayList<Buffet>();
 		for(Buffet b: buffetRepo.findAll()) {
 			buffet.add(b);
 		}
 		return buffet;
+	}
+	
+	public boolean alreadyExists(Buffet buffet) {
+		return buffetRepo.existsByNomeAndDescrizione(buffet.getNome(), buffet.getDescrizione());
+	}
+	@Transactional
+	public void deleteById(Long id) {
+		buffetRepo.deleteById(id);
 	}
 }
