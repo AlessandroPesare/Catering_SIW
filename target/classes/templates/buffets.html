@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Elenco Buffet</title>
+</head>
+<body>
+	<h1>Elenco Buffet:</h1>
+	<table>
+		<tr>
+			<th>Nome</th>
+			<th>Chef</th>
+		</tr>
+		<tr th:each="buffet : ${buffets}">
+			<td th:text="${buffet.nome}">Nome</td>
+			<td th:text="${buffet.chef}">Chef</td>
+			<td><a href="buffet.html"
+				th:href="@{'/buffet' + '/' + ${buffet.id}}" th:text="dettagli">dettagli buffet</a>
+			</td>
+	</table>
+</body>
+</html>
