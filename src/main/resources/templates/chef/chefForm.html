@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Inserimento chef</title>
+</head>
+<body>
+	<form th:action="@{/chef}" method="post" th:object="${chef}">
+		<div th:if="${#fields.hasGlobalErrors()}"> 
+			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">Errore Globale</p>
+		</div>
+		<div>
+			nome dello chef: <input type="text" th:field="*{nome}" />
+		</div>
+		<div>
+			cognome dello chef: <input type="text" th:field="*{cognome}" />
+		</div>
+		<div>
+			nazione dello chef: <input type="text" th:field="*{nazione}" />
+		</div>
+		<div>
+			<button type="submit">Conferma</button>
+		</div>
+	</form>
+</body>
+</html>

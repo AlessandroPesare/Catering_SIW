@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8" />
-<title>Progetto SIW</title>
+<meta charset="utf-8" />
+<title>Catering Service</title>
 </head>
-<body>
-	<div>
-		<h4>Operazioni Amministratore di Sistema</h4>
-		<div>
-			<a th:href="@{/buffetForm}">Inserisci Buffet</a>
-		</div>
-		<div>
-			<a th:href="@{/buffets}">Visualizza Buffet</a>
-		</div>
-	</div>
-</body>
+<div>
+	<h1>Catering Service</h1>
+	<h3>
+		<a>Roma</a>
+	</h3>
+<section>
+		<a th:href="@{/login}" >Accedi</a>
+		<a th:href="@{/register}" >Registrati</a>
+</section>
+</div>
+<section>
+	<p>Ti presentiamo il nostro servizio di catering adatto ad ogni
+		tipologia di evento, proponiamo una serie di buffet originali proposti
+		da chef di fama nazionale.</p>
+	<p>I prodotti che vengono utilizzati dagli chef sono di alta qualità,
+		saremo felici di ricevere un feedback da parte vostra.</p>
+</section>
+<section>
+	<p>Chi siamo:</p>
+	<p> La nostra azienda nasce,a Roma, nel 2018, l'idea di base è quella di proporre buffet
+		 carattarizzati da tipici prodotti italiani.</p>
+	<p>
+		<a href="https://instagram.com" class="btn twtr" target="_b">Seguici su Instagram</a>
+	</p>
+</section>
 </html>

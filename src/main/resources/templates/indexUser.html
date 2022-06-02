@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Home Page: Catering</title>
+</head>
+<body>
+	<section>
+		<nav>
+			<h1 class="title">The Catering Company</h1>
+			<div>
+				<ul>
+					<li><a href="/"> HOME </a></li>
+					<li><a href=""> ABOUT </a></li>
+					<li><a th:href="@{/chef}"> VISUALIZZA CHEFS </a></li>
+					<li><a th:href="@{/buffetForm}"> VISUALIZZA BUFFETS </a></li>
+					<li><a th:href="@{/ingredientiForm}"> VISUALIZZA INGREDIENTI </a></li>
+					<li><a th:href="@{/piattiForm}"> VISUALIZZA PIATTI </a></li>
+					<li><a href=""> CONTACT </a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="text-box">
+			<h1>This site allows you to choose youre favourite type of
+				Catering</h1>
+		</div>
+
+	</section>
+	<footer></footer>
+</body>
+</html>

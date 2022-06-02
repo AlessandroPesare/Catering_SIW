@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Home Page: Catering Management</title>
+</head>
+<body>
+	<section>
+		<nav>
+
+			<h1>The Catering Company</h1>
+			<div>
+				<ul>
+					<li><a href="/"> HOME </a></li>
+					<li><a th:href="@{/admin/chef}"> CHEFS MANAGMENT </a></li>
+					<li><a th:href="@{/admin/buffetForm}"> BUFFETS MANAGMENT</a></li>
+					<li><a th:href="@{/admin/ingredientiForm}"> INGREDIENTI MANAGMENT</a></li>
+					<li><a th:href="@{/admin/piattiForm}"> PIATTI MANAGMENT</a></li>
+				</ul>
+				<a th:href="@{/logout}"><button type="submit">Log out</button></a>
+			</div>
+		</nav>
+
+		<div>
+			<h1>ADMIN</h1>
+			<p></p>
+		</div>
+
+	</section>
+	<footer> </footer>
+</body>
+
+</html>
