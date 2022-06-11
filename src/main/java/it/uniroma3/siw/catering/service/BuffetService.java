@@ -10,46 +10,50 @@ import org.springframework.stereotype.Service;
 
 import it.uniroma3.siw.catering.model.Buffet;
 import it.uniroma3.siw.catering.model.Chef;
+import it.uniroma3.siw.catering.model.Piatto;
 import it.uniroma3.siw.catering.repository.BuffetRepository;
 
 @Service
 public class BuffetService {	
-	@Autowired
-	private BuffetRepository buffetRepo;
+
+	@Autowired private BuffetRepository buffetRepository;
 	
-	//ci pensa springboot
 	@Transactional
 	public void save(Buffet buffet) {
-		buffetRepo.save(buffet);
+		buffetRepository.save(buffet);
 	}
 	
-	//interrogazione non è transazionale
 	public Buffet findById(Long id) {
-		return buffetRepo.findById(id).get();
+		return buffetRepository.findById(id).get();
 	}
 	
 	public List<Buffet> findAll(){
-		List<Buffet> buffet = new ArrayList<Buffet>();
-		for(Buffet b: buffetRepo.findAll()) {
-			buffet.add(b);
+		List<Buffet> buffets = new ArrayList<>();
+		for(Buffet b : buffetRepository.findAll()) {
+			buffets.add(b);
 		}
-		return buffet;
+		return buffets;
 	}
 	
-	public boolean alreadyExists(Buffet buffet) {
-		return buffetRepo.existsByNomeAndDescrizione(buffet.getNome(), buffet.getDescrizione());
-	}
-	@Transactional
-	public void deleteById(Long id) {
-		buffetRepo.deleteById(id);
-	}
-
-	public void deleteBuffet(Long id) {
-		buffetRepo.deleteById(id);
-	}
-
 	public List<Buffet> findAllByChef(Chef chef) {
-		List<Buffet> buffets = buffetRepo.findAllByChef(chef);
+		List<Buffet> buffets = new ArrayList<>();
+		for(Buffet b: buffetRepository.findByChef(chef)) {
+			buffets.add(b);
+		}
 		return buffets;
+	}
+	
+	@Transactional
+	public void deleteBuffet(Long id) {
+		this.buffetRepository.deleteById(id);
+	}
+
+	public boolean alreadyExists(Buffet buffet) {
+		return buffetRepository.existsByNomeAndChef(buffet.getNome(), buffet.getChef());
+	}
+
+	public List<Piatto> getPiattiOfBuffet(Long id){
+		Buffet buffet = this.buffetRepository.findById(id).get();
+		return buffet.getPiatti();
 	}
 }

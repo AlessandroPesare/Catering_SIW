@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="fragments/layout.html :: headerfiles(title='Elenco Buffets')">
+<meta charset="UTF-8" />
+<title>Catering Service</title>
+</head>
+<div>
+	<div>
+		<h1>Catering Service</h1>
+	</div>
+	<div>
+		<a href="/indexUser">Home</a>
+	</div>
+</div>
+<section>
+	<p align="center">I nostri Chef di fama internazionale e i loro
+		gustosi buffet</p>
+	<ul>
+		<li th:each="chef : ${chefs}">
+			<p
+				th:text="${chef.nome} + ' ' + ${chef.cognome} + ', ' + ${chef.nazione}">Valentino
+				Rossi, Italia</p>
+			<ul>
+				<li th:each="buffet : ${chef.buffet}">
+					<div class="buffets">
+						<a th:text="${buffet.nome} + ', '"
+							th:href="@{administration/piatti/{id}(id=${buffet.id})}">...</a>
+						<a th:text="${buffet.descrizione}">Descrizione</a>
+					</div>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</section>
+</html>

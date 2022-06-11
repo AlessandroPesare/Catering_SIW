@@ -1,0 +1,39 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/layout.html :: headerfiles(title='Elenco Buffets')">
+<meta charset="utf-8" />
+<title>Catering Service</title>
+</head>
+<div>
+	<div>
+		<a href="/index">Home</a>
+		<a href="info/chefs">Back</a>
+	</div>
+	<div>
+		<h1>Catering Service</h1>
+	</div>
+</div>
+<section>
+	<p align="center" th:text="'I piatti del buffet ' + ${buffet.nome} sono:">Buffet</p>
+	<ul>
+		<li th:each="piatto : ${buffet.piatti}">
+			<div>
+				<p th:text="${piatto.nome} + ' con:'">Piatto</p>
+			</div>
+			<ul>
+				<li th:each="ingrediente : ${piatto.ingredienti}">
+					<div class="buffets">
+						<a th:text="${ingrediente.nome} + ', Origine: ' + ${ingrediente.origine}">Ingrediente</a>
+					</div>
+					<div>Descrizione:
+						<a th:text="${ingrediente.descrizione}">Ingrediente</a>
+					</div>
+
+				</li>
+			</ul>
+			<div>
+				<p th:text="'Descrizione dello Chef: ' + ${piatto.descrizione}">Piatto</p>
+			</div>
+		</li>
+	</ul>
+</section>
+</html>

@@ -4,20 +4,47 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Ingrediente {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	
+	@NotBlank
 	private String nome;
 	
+	@NotBlank
 	private String origine;
 	
 	private String descrizione;
 	
+	public Ingrediente(String nome, String origine) {
+		this.nome = nome;
+		this.origine = origine;
+	}
+	
+	
+	public Ingrediente(String nome, String origine,String descrizione) {
+		this.nome = nome;
+		this.origine = origine;
+		this.descrizione = descrizione;
+	}
+
+	public Ingrediente() {
+	}
+
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -42,12 +69,4 @@ public class Ingrediente {
 		this.descrizione = descrizione;
 	}
 	
-    public void setId(Long id) {
-        this.id = id;
-    }
-    
-    public Long getId() {
-        return id;
-    }
-    
 }

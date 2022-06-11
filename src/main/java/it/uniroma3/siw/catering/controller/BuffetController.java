@@ -1,5 +1,7 @@
 package it.uniroma3.siw.catering.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +23,33 @@ import it.uniroma3.siw.catering.validator.BuffetValidator;
 public class BuffetController {
 
 	@Autowired private BuffetService buffetService;
-	@Autowired private ChefService chefService;
 	
+	@Autowired private ChefService chefService;
+
 	@Autowired private BuffetValidator buffetValidator;
 
-	@GetMapping("/administration/buffets")
+/*
+ * USER
+ */
+	@GetMapping("info/buffets")
 	public String getBuffets(Model model) {
+		List<Buffet> buffets = this.buffetService.findAll();
+		model.addAttribute("buffets", buffets);
+		return "info/buffets.html";
+	}
+	
+	@GetMapping("info/buffet/{id}")
+	public String getSingoloBuffet(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("buffet", this.buffetService.findById(id));
+		model.addAttribute("piatti", this.buffetService.getPiattiOfBuffet(id));
+		return "info/buffet.html";
+	}
+/*
+ * ADMIN
+ */
+	@GetMapping("/administration/buffets")
+	public String listBuffets(Model model) {
 		model.addAttribute("buffets", buffetService.findAll());
-
 		return "admin/buffet/buffets.html";
 	}
 	
@@ -38,7 +59,7 @@ public class BuffetController {
 		model.addAttribute("buffets", buffetService.findAllByChef(chef));
 		model.addAttribute("chef", chef);
 		
-		return "admin/buffet/buffets_per_chef.html";
+		return "admin/buffet/buffets_for_chef.html";
 	}
 	
 	@GetMapping("/administration/buffets/new/{chef_id}")
@@ -51,15 +72,17 @@ public class BuffetController {
 	}
 	
 	@PostMapping("/administration/buffets/{chef_id}")
-	public String addBuffet(@PathVariable Long chef_id, @Valid @ModelAttribute("buffet") Buffet buffet, BindingResult bindingResults, Model model) {
-		Chef chef = chefService.findById(chef_id);
+	public String addBuffet(@PathVariable("chef_id") Long chefId, @Valid @ModelAttribute("buffet") Buffet buffet, BindingResult bindingResults, Model model) {
+		//recupero lo chef a cui è associato l'id
+		Chef chef = chefService.findById(chefId);
 		chef.addBuffet(buffet);
 		buffet.setChef(chef);
+		//validazione dati del buffet
 		this.buffetValidator.validate(buffet, bindingResults);
 		
 		if(!bindingResults.hasErrors()) {
 			buffetService.save(buffet);
-			model.addAttribute("buffet", model);
+			model.addAttribute("buffet", buffet);
 			return "redirect:/administration/chefs";
 		}
 		else

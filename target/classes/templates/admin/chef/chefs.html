@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Catering Management System</title>
+</head>
+<body>
+	<div>
+		<h1>Catering Management System</h1>
+	</div>
+	<div>
+		<div>
+			<h2>Elenco degli Chef</h2>
+		</div>
+		<div>
+			<div>
+				<a th:href="@{/administration/chefs/new}">Add Chef</a>
+			</div>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Cognome</th>
+					<th>Nazione</th>
+					<th>Operazione</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="chef: ${chefs}">
+					<td th:text="${chef.nome}"></td>
+					<td th:text="${chef.cognome}"></td>
+					<td th:text="${chef.nazione}"></td>
+					<td>
+						<a th:href="@{/administration/chefs/edit/{id}(id=${chef.id})}">Update</a>
+						<a th:href="@{/administration/chefs/del/{id}(id=${chef.id})}">Delete</a>
+						<a th:href="@{/administration/buffets/new/{chef_id}(chef_id=${chef.id})}">Add Buffet</a>
+						<a th:href="@{/administration/buffets/chef/{chef_id}(chef_id=${chef.id})}">Visualizza i Buffet</a>			
+					</td>
+				</tr>
+			</tbody>
+		</table>
+			<div>
+				<a th:href="@{/default}">Back</a>
+			</div>
+		</div>
+</body>
+</html>

@@ -8,48 +8,48 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import it.uniroma3.siw.catering.model.Buffet;
 import it.uniroma3.siw.catering.model.Chef;
 import it.uniroma3.siw.catering.repository.ChefRepository;
 
 @Service
 public class ChefService {
-	@Autowired
-	private ChefRepository chefRepo;
-	
-	//ci pensa springboot
+
+	@Autowired private ChefRepository chefRepository;
+
 	@Transactional
-	public void save(Chef chef) {
-		chefRepo.save(chef);
+	public Chef save(Chef chef) {
+		return chefRepository.save(chef);
 	}
-	
-	//interrogazione non è transazionale
+
 	public Chef findById(Long id) {
-		return chefRepo.findById(id).get();
+		return chefRepository.findById(id).get();
 	}
-	
+
 	public List<Chef> findAll(){
 		List<Chef> chefs = new ArrayList<Chef>();
-		for(Chef c: chefRepo.findAll()) {
+		for(Chef c : chefRepository.findAll()) {
 			chefs.add(c);
 		}
 		return chefs;
 	}
-	
-	public boolean alreadyExists(Chef chef) {
-		return chefRepo.existsByNomeAndCognomeAndNazione(chef.getNome(), chef.getCognome(),chef.getNazione());
-	}
+
 	@Transactional
-	public void deleteById(Long id) {
-		chefRepo.deleteById(id);
+	public Chef updateChef(Chef chef) {
+		return this.save(chef);
 	}
 
-	public void updateChef(Chef oldChef) {
-		// TODO Auto-generated method stub
-		
+	@Transactional
+	public void deleteChefById(Long id) {
+		chefRepository.deleteById(id);
+	}
+
+	public boolean alreadyExists(Chef chef) {
+		return chefRepository.existsByNomeAndCognome(chef.getNome(), chef.getCognome());
 	}
 	
-	public void deleteChefById(Long id) {
-		// TODO Auto-generated method stub
-		
+	public List<Buffet> getBuffetsOfChef(Long id){
+		Chef c = this.chefRepository.findById(id).get();
+		return c.getBuffets();
 	}
 }

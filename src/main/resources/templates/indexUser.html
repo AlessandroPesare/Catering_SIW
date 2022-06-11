@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
-<head>
-<title>Home Page: Catering</title>
+<head th:replace="fragments/layout.html :: headerfiles(title='Elenco Buffets')">
+<title>Home Page: Catering </title>
 </head>
 <body>
 	<section>
@@ -11,11 +10,10 @@
 			<div>
 				<ul>
 					<li><a href="/"> HOME </a></li>
-					<li><a href=""> ABOUT </a></li>
-					<li><a th:href="@{/chef}"> VISUALIZZA CHEFS </a></li>
-					<li><a th:href="@{/buffetForm}"> VISUALIZZA BUFFETS </a></li>
-					<li><a th:href="@{/ingredientiForm}"> VISUALIZZA INGREDIENTI </a></li>
-					<li><a th:href="@{/piattiForm}"> VISUALIZZA PIATTI </a></li>
+					<li><a th:href="@{/info/chefs}"> VISUALIZZA CHEFS </a></li>
+					<li><a th:href="@{/info/buffets}"> VISUALIZZA BUFFETS </a></li>
+					<li><a th:href="@{info/ingredienti}"> VISUALIZZA INGREDIENTI </a></li>
+					<li><a th:href="@{info/piatti}"> VISUALIZZA PIATTI </a></li>
 					<li><a href=""> CONTACT </a></li>
 				</ul>
 			</div>

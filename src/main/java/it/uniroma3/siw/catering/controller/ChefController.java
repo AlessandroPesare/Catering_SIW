@@ -19,35 +19,58 @@ import it.uniroma3.siw.catering.validator.ChefValidator;
 
 @Controller
 public class ChefController {
-	@Autowired
-	private ChefService chefService;
-	@Autowired
-	private ChefValidator validator;
 
-	@PostMapping("/administration/chefs")
-	public String addChef(@Valid @ModelAttribute("chef") Chef chef, BindingResult bindingResult, Model model) {
-		validator.validate(chef, bindingResult);
-		if(!bindingResult.hasErrors()) {
-			chefService.save(chef);
-			model.addAttribute("chef", chef);
-			return "administration/chef.html";
-		}
-		return "admin/chef/new_chef.html";
+	@Autowired private ChefService chefService;
+	
+	@Autowired private ChefValidator chefValidator;
+/*
+ * USER
+ */
+	@GetMapping("info/chefs")
+	public String getChefs(Model model) {
+		List<Chef> chefs = this.chefService.findAll();
+		model.addAttribute("chefs", chefs);
+		return "info/chefs.html";
 	}
 	
+	@GetMapping("info/chef/{id}")
+	public String getSingoloChef(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("chef", this.chefService.findById(id));
+		model.addAttribute("buffets", this.chefService.getBuffetsOfChef(id));
+		return "info/chef.html";
+	}
+	
+/*
+ * ADMIN
+ */
 	@GetMapping("/administration/chefs")
-	public String getChefs(Model model) {
-		List<Chef> chefs = chefService.findAll();
-		model.addAttribute("chefs", chefs);
-
+	public String listChefs(Model model) {
+		model.addAttribute("chefs", chefService.findAll());
 		return "admin/chef/chefs.html";
 	}
 
-	@GetMapping("/administration/chef/{id}")
-	public String getChef(@PathVariable("id") Long id, Model model){
-		Chef chef = chefService.findById(id);
-		model.addAttribute("chef", chef);
-		return "admin/chef/edit_chef.html";	
+	@GetMapping("/administration/chefs/new")
+	public String createChefForm(Model model) {
+		model.addAttribute("chef", new Chef());
+		return "admin/chef/create_chef.html";
+	}
+
+	@PostMapping("/administration/chefs")
+	public String addChef(@Valid @ModelAttribute("chef") Chef chef, BindingResult bindingResults, Model model) {
+		chefValidator.validate(chef, bindingResults);
+		if(!bindingResults.hasErrors()) {
+			chefService.save(chef);
+			model.addAttribute("chef", model);
+			return this.listChefs(model);
+		}
+		else
+			return "admin/chef/create_chef.html";
+	}
+
+	@GetMapping("/administration/chefs/edit/{id}")
+	public String updateChefForm(@PathVariable Long id, Model model) {
+		model.addAttribute("chef", chefService.findById(id));
+		return "admin/chef/edit_chef.html";
 	}
 
 	@PostMapping("/administration/chefs/{id}")
@@ -68,16 +91,16 @@ public class ChefController {
 			return "admin/chef/edit_chef.html";
 	}
 	
-	@GetMapping("/administration/chefs/new")
-	public String getChefForm(Model model) {
-		model.addAttribute("chef", new Chef());
-		return "admin/chef/new_chef.html";
-	}
-	
 	@GetMapping("/administration/chefs/del/{id}")
 	public String deleteChef(@PathVariable Long id) {
 		chefService.deleteChefById(id);
-		return "/administration/chefs";
+		return "redirect:/administration/chefs";
 	}
+	
+	@GetMapping("/our_chefs")
+	public String showOurChefs(Model model) {
+		model.addAttribute("chefs", chefService.findAll());
 
+		return "our_chefs.html";
+	}
 }

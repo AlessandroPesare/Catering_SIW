@@ -18,63 +18,63 @@ import it.uniroma3.siw.catering.validator.UserValidator;
 
 @Controller
 public class AuthenticationController {
-	
+
 	@Autowired
 	private CredentialsService credentialsService;
-	
+
 	@Autowired
 	private UserValidator userValidator;
-	
+
 	@Autowired
 	private CredentialsValidator credentialsValidator;
-	
+
 	@RequestMapping(value = "/register", method = RequestMethod.GET) 
 	public String showRegisterForm (Model model) {
 		model.addAttribute("user", new User());
 		model.addAttribute("credentials", new Credentials());
-		return "registerForm.html";
+		return "registerUser";
 	}
-	
+
 	@RequestMapping(value = "/login", method = RequestMethod.GET) 
 	public String showLoginForm (Model model) {
 		return "loginForm.html";
 	}
-	
+
 	@RequestMapping(value = "/logout", method = RequestMethod.GET) 
 	public String logout(Model model) {
 		return "index";
 	}
-	
-    @RequestMapping(value = "/default", method = RequestMethod.GET)
-    public String defaultAfterLogin(Model model) {
-        
-    	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    	Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-    	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
-            return "indexAdmin.html";
-        }
-        return "indexUser.html";
-    }
-	
-    @RequestMapping(value = { "/register" }, method = RequestMethod.POST)
-    public String registerUser(@ModelAttribute("user") User user,
-                 BindingResult userBindingResult,
-                 @ModelAttribute("credentials") Credentials credentials,
-                 BindingResult credentialsBindingResult,
-                 Model model) {
 
-        // validate user and credentials fields
-        this.userValidator.validate(user, userBindingResult);
-        this.credentialsValidator.validate(credentials, credentialsBindingResult);
+	@RequestMapping(value = "/default", method = RequestMethod.GET)
+	public String defaultAfterLogin(Model model) {
 
-        // if neither of them had invalid contents, store the User and the Credentials into the DB
-        if(!userBindingResult.hasErrors() && ! credentialsBindingResult.hasErrors()) {
-            // set the user and store the credentials;
-            // this also stores the User, thanks to Cascade.ALL policy
-            credentials.setUser(user);
-            credentialsService.saveCredentials(credentials);
-            return "registrationSuccessful.html";
-        }
-        return "registerForm.html";
-    }
+		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+			return "indexAdmin.html";
+		}
+		return "indexUser.html";
+	}
+
+	@RequestMapping(value = { "/register" }, method = RequestMethod.POST)
+	public String registerUser(@ModelAttribute("user") User user,
+			BindingResult userBindingResult,
+			@ModelAttribute("credentials") Credentials credentials,
+			BindingResult credentialsBindingResult,
+			Model model) {
+
+		// validate user and credentials fields
+		this.userValidator.validate(user, userBindingResult);
+		this.credentialsValidator.validate(credentials, credentialsBindingResult);
+
+		// if neither of them had invalid contents, store the User and the Credentials into the DB
+		if(!userBindingResult.hasErrors() && ! credentialsBindingResult.hasErrors()) {
+			// set the user and store the credentials;
+			// this also stores the User, thanks to Cascade.ALL policy
+			credentials.setUser(user);
+			credentialsService.saveCredentials(credentials);
+			return "registrationSuccessful.html";
+		}
+		return "registerUser.html";
+	}
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="utf-8" />
+<head
+	th:replace="fragments/layout.html :: headerfiles(title='Elenco Buffets')">
 <title>Catering Service</title>
 </head>
 <div>
@@ -9,24 +9,30 @@
 	<h3>
 		<a>Roma</a>
 	</h3>
-<section>
-		<a th:href="@{/login}" >Accedi</a>
-		<a th:href="@{/register}" >Registrati</a>
-</section>
+	<section>
+		<a th:href="@{/login}">Accedi</a> <a th:href="@{/register}">Registrati</a>
+	</section>
 </div>
 <section>
 	<p>Ti presentiamo il nostro servizio di catering adatto ad ogni
 		tipologia di evento, proponiamo una serie di buffet originali proposti
 		da chef di fama nazionale.</p>
-	<p>I prodotti che vengono utilizzati dagli chef sono di alta qualità,
-		saremo felici di ricevere un feedback da parte vostra.</p>
+	<p>I prodotti che vengono utilizzati dagli chef sono di alta
+		qualit&#224, saremo felici di ricevere un feedback da parte vostra.</p>
 </section>
 <section>
 	<p>Chi siamo:</p>
-	<p> La nostra azienda nasce,a Roma, nel 2018, l'idea di base è quella di proporre buffet
-		 carattarizzati da tipici prodotti italiani.</p>
+	<p>Nel 2018 decidiamo di far nascere il "Piccolo Buffet" in via
+		della Vasca Navale a Roma,l'idea imprenditoriale &#232 pensata come punto
+		di ristorazione self-service.L&apos azienda si afferma rapidamente
+		concentrando tutte le sue attenzioni sui clienti che, quotidianamente,
+		consumano pasti caldi e sani. L&#39 impegno costante nella scelta dei
+		prodotti, al fine di garantirne la variet&#224, conferma l&#39 ottima qualit&#224
+		che da sempre ha caratterizzato l&#39 azienda.
+	</p>
 	<p>
-		<a href="https://instagram.com" class="btn twtr" target="_b">Seguici su Instagram</a>
+		<a href="https://instagram.com" class="btn twtr" target="_b">Seguici
+			su Instagram</a>
 	</p>
 </section>
 </html>

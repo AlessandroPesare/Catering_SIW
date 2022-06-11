@@ -8,7 +8,8 @@ import it.uniroma3.siw.catering.model.Buffet;
 import it.uniroma3.siw.catering.model.Chef;
 
 public interface BuffetRepository extends CrudRepository<Buffet, Long> {
-	public boolean existsByNomeAndDescrizione(String nome,String descrizione);
+	
+	public boolean existsByNomeAndChef(String nome,Chef chef);
 
-	public List<Buffet> findAllByChef(Chef chef);
+	public List<Buffet> findByChef(Chef chef);
 }
