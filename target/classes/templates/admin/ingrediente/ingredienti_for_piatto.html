@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="fragments/layout.html :: headerfiles(title='Elenco Buffets')">
+<title>Catering Management System</title>
+</head>
+<body>
+
+	<section class="sezione-contenuto">
+		<div>
+			<h1 th:text="'Elenco degli ingredienti del piatto: ' + ${piatto.nome}">
+				Elenco degli ingredienti del piatto...</h1>
+		</div>
+		<br>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Nome</th>
+					<th scope="col">Descrizione</th>
+					<th scope="col">Operazione</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="ingrediente : ${ingredienti}">
+					<td th:text="${ingrediente.nome}"></td>
+					<td th:text="${ingrediente.descrizione}"></td>
+					<td><a class="btn btn-danger"
+						th:href="@{/administration/ingredienti/del/{id}(id=${ingrediente.id})}">Delete</a>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+	
+		<div th:replace="fragments/layout.html :: jsFiles"></div>
+</body>
+</html>

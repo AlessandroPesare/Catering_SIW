@@ -3,6 +3,7 @@ package it.uniroma3.siw.catering.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +24,7 @@ public class Piatto {
 	
 	private String descrizione;
 	
-	@ManyToMany
+	@ManyToMany (cascade = CascadeType.ALL)
 	private List<Ingrediente> ingredienti;
 	
 	@ManyToOne

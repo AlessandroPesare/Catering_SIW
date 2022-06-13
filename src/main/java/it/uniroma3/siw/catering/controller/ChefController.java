@@ -72,7 +72,7 @@ public class ChefController {
 		model.addAttribute("chef", chefService.findById(id));
 		return "admin/chef/edit_chef.html";
 	}
-
+	
 	@PostMapping("/administration/chefs/{id}")
 	public String updateChef(@PathVariable Long id, @Valid @ModelAttribute("chef") Chef chef, 
 			BindingResult bindingResults, Model model) {

@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>Home Page: Catering Management</title>
+<head th:replace="fragments/layout.html :: headerfiles(title='Home Page: Catering Management')">
 </head>
-<body>
+<body
+	style="background: url(https://t3.ftcdn.net/jpg/03/48/55/20/240_F_348552050_uSbrANL65DNj21FbaCeswpM33mat1Wll.jpg); background-size: cover; background-repeat: no-repeat;">
 	<section>
+		<h1 class="titolo2">The Catering Company</h1>
 		<nav>
-
-			<h1>The Catering Company</h1>
 			<div>
 				<ul>
 					<li><a href="/"> HOME </a></li>
-					<li><a th:href="@{/administration/chefs}"> CHEFS MANAGMENT </a></li>
-					<li><a th:href="@{/admin/buffetForm}"> BUFFETS MANAGMENT</a></li>
-					<li><a th:href="@{/admin/piattiForm}"> PIATTI MANAGMENT</a></li>
-					<li><a th:href="@{/admin/ingredientiForm}"> INGREDIENTI MANAGMENT</a></li>
+					<li><a th:href="@{/administration/chefs}"> CHEFS MANAGMENT
+					</a></li>
+					<li><a th:href="@{/administration/buffets}"> BUFFETS
+							MANAGMENT</a></li>
+					<li><a th:href="@{/administration/piatti}"> PIATTI
+							MANAGMENT</a></li>
+					<li><a th:href="@{/administration/ingredienti}">
+							INGREDIENTI MANAGMENT</a></li>
 				</ul>
 				<a th:href="@{/logout}"><button type="submit">Log out</button></a>
 			</div>

@@ -1,5 +1,7 @@
 package it.uniroma3.siw.catering.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +24,38 @@ import it.uniroma3.siw.catering.validator.PiattoValidator;
 public class PiattoController {
 
 	@Autowired private PiattoService piattoService;
+	
 	@Autowired private BuffetService buffetService;
+	
 	@Autowired private IngredienteService ingredienteService;
 	
 	@Autowired private PiattoValidator piattoValidator;
 	
+	/*
+	 * USER
+	 */
+		@GetMapping("info/piatti")
+		public String getPiatti(Model model) {
+			List<Piatto> piatti = this.piattoService.findAll();
+			model.addAttribute("piatti", piatti);
+			return "info/piatti.html";
+		}
+		
+		@GetMapping("info/piatti_amati")
+		public String getPiattiAmati(Model model) {
+			return "info/piattiAmati.html";
+		}
+		
+		@GetMapping("info/piatto/{id}")
+		public String getSingoloPiatto(@PathVariable("id") Long id, Model model) {
+			model.addAttribute("piatto", this.piattoService.findById(id));
+			return "info/piatto.html";
+		}
+		
+		/*
+		 * ADMIN
+		 */
+		
 	@GetMapping("/administration/piatti")
 	public String listPiatti(Model model) {
 		model.addAttribute("piatti", piattoService.findAll());

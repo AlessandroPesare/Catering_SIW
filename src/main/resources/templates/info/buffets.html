@@ -1,28 +1,41 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/layout.html :: headerfiles(title='Elenco Buffets')"> </head>
-<body>
-	<h1>Elenco Buffet:</h1>
-
-	<table id="customers">
-		<thead>
-			<tr>
-				<th>Nome</th>
-				<th>Descrizione</th>
-				<th>Operazione</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="buffet: ${buffets}">
-				<td th:text="${buffet.nome}"></td>
-				<td th:text="${buffet.descrizione}"></td>
-				<td><a
-					th:href="@{/administration/piatti/buffet/{buffet_id}(buffet_id=${buffet.id})}">Guarda i Piatti</a></td>
-			</tr>
-		</tbody>
-	</table>
-
+<head
+	th:replace="fragments/layout.html :: headerfiles(title='Elenco Buffets')">
+<meta charset="UTF-8" />
+<title>Catering Service</title>
+</head>
+<body
+	style="background: url(https://wallpaperforu.com/wp-content/uploads/2020/10/food-wallpaper-20100313201245.jpg); background-size: cover; background-repeat: no-repeat;">
+	<div>
+		<div>
+			<h1 class="titolo"> Catering Service</h1>
+			<br>
+		</div>
+		<div>
+			<h3>
+				<a th:href="@{/default}">Home</a>
+			</h3>
+		</div>
+	</div>
+	<section class="sezione-contenuto">
+		<h3 class = sottotitolo align="center">I nostri armoniosi Buffet</h3>
+		<br> <br>
+		<div class="row">
+			<div class="col col-md-4" th:each="buffet : ${buffets}">
+				<div class="card" style="width: 18rem;">
+					<img class="card-img-top" src="/images/buffet.jpg"
+						alt="Card image cap">
+					<div class="card-body">
+						<h5 class="card-title"
+							th:text="${buffet.nome}">Nome Buffet</h5>
+						<a th:href="@{/info/buffet/}+${buffet.id}"class="btn btn-primary">Dettagli
+							Buffet</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<br>
+	<br>
 </body>
 </html>
-
-

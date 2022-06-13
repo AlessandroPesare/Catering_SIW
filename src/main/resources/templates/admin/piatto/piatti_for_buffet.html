@@ -5,48 +5,43 @@
 <title>Catering Management System</title>
 </head>
 <body>
-	<nav>
-		<a>Catering Management System</a>
+
+	<section class="sezione-contenuto">
 		<div>
-			<ul>
-				<li><a>Piatto Management</a>
-				</li>
-			</ul>
+			<h1 th:text="'Elenco dei piatti del buffet: ' + ${buffet.nome}">
+				Elenco dei piatti del buffet...</h1>
 		</div>
-	</nav>
-	<div>
-		<div>
-			<h1 th:text="'Elenco dei Piatti del Buffet ' + ${buffet.nome}">
-				Elenco dei Piatti dello Chef Rossi</h1>
-		</div>
-		<table>
+		<br>
+		<table class="table">
 			<thead>
 				<tr>
-					<th>Nome</th>
-					<th>Descrizione</th>
-					<th>Operazione</th>
+					<th scope="col">Nome</th>
+					<th scope="col">Descrizione</th>
+					<th scope="col">Operazione</th>
 				</tr>
 			</thead>
 
 			<tbody>
-				<tr th:each="piatto: ${piatti}">
+				<tr th:each="piatto : ${piatti}">
 					<td th:text="${piatto.nome}"></td>
 					<td th:text="${piatto.descrizione}"></td>
-					<td><a
+					<td><a class="btn btn-danger"
 						th:href="@{/administration/piatti/del/{id}(id=${piatto.id})}">Delete</a>
-						<a
-						th:href="@{/administration/ingredienti/new/{piatto_id}(piatto_id=${piatto.id})}">Add
-							Ingrediente</a> <a
+						<a class="btn btn-warning"
+						th:href="@{/administration/ingredienti/new/{piatto_id}(piatto_id=${piatto.id})}">Add ingrediente</a>
+						<a class="btn btn-info"
 						th:href="@{/administration/ingredienti/piatto/{piatto_id}(piatto_id=${piatto.id})}">Guarda
-							ingredienti</a></td>
+							gli ingredienti</a></td>
 				</tr>
 			</tbody>
 		</table>
 		<div>
 			<div>
-				<a th:href="@{/administration/chefs}">Back</a>
+				<a th:href="@{/administration/buffets}">Back</a>
 			</div>
 		</div>
-	</div>
+	</section>
+	
+		<div th:replace="fragments/layout.html :: jsFiles"></div>
 </body>
 </html>

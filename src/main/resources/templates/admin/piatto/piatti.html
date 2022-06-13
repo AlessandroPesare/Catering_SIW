@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Catering Management System</title>
+</head>
+<body>
+	<div>
+		<h1>Catering Management System</h1>
+	</div>
+	<div>
+		<div>
+			<h2>Elenco dei piatti</h2>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Descrizione</th>
+					<th>Operazione</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="piatto: ${piatti}">
+					<td th:text="${piatto.nome}"></td>
+					<td th:text="${piatto.descrizione}"></td>
+					<td>
+						<a th:href="@{/administration/piatti/del/{id}(id=${piatto.id})}">Delete</a>
+						<a th:href="@{/administration/ingredienti/new/{piatto_id}(piatto_id=${piatto.id})}">Add Piatto</a>
+						<a th:href="@{/administration/ingredienti/piatto/{piatto_id}(piatto_id=${piatto.id})}">Visualizza i Piatti</a>			
+					</td>
+				</tr>
+			</tbody>
+		</table>
+			<div>
+				<a th:href="@{/default}">Back</a>
+			</div>
+		</div>
+</body>
+</html>

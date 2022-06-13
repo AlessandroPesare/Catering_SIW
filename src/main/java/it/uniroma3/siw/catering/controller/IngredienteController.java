@@ -21,10 +21,14 @@ import it.uniroma3.siw.catering.validator.IngredienteValidator;
 public class IngredienteController {
 	
 	@Autowired private IngredienteService ingredienteService;
+	
 	@Autowired private PiattoService piattoService;
 	
 	@Autowired private IngredienteValidator ingredienteValidator;
 	
+	/*
+	 * ADMIN
+	 */
 	@GetMapping("/administration/ingredienti")
 	public String listBuffets(Model model) {
 		model.addAttribute("ingredienti", ingredienteService.findAll());
@@ -38,30 +42,28 @@ public class IngredienteController {
 		model.addAttribute("piatto", piatto);
 		model.addAttribute("ingredienti", piatto.getIngredienti());
 		
-		return "admin/ingrediente/ingredienti_per_piatto.html";
+		return "admin/ingrediente/ingredienti_for_piatto.html";
 	}
 	
-	@GetMapping("/administration/ingredienti/new")
-	public String createIngredienteForm(Model model) {
+	@GetMapping("/administration/ingredienti/new/{piatto_id}")
+	public String createIngredienteForm(@PathVariable("piatto_id") Long id, Model model) {
 		Ingrediente ingrediente = new Ingrediente();
 		model.addAttribute("ingrediente", ingrediente);
+		model.addAttribute("idPiatto", id);
 		return "admin/ingrediente/create_ingrediente.html";
 	}
 
-	@PostMapping("/administration/ingredienti")
-	public String addIngrediente(@Valid @ModelAttribute("ingrediente") Ingrediente ingrediente, BindingResult bindingResults, Model model) {
+	@PostMapping("/administration/ingredienti/{idPiatto}")
+	public String addIngrediente(@Valid @ModelAttribute("ingrediente") Ingrediente ingrediente,@PathVariable("idPiatto") Long id, BindingResult bindingResults, Model model) {
 		this.ingredienteValidator.validate(ingrediente, bindingResults);
 		if(!bindingResults.hasErrors()) {
-			ingredienteService.save(ingrediente);
+			Piatto p = piattoService.findById(id);
+			p.getIngredienti().add(ingrediente);
+			piattoService.save(p);
 			model.addAttribute("ingrediente", model);
 			return "redirect:/administration/ingredienti";
 		}
 		else
 			return "admin/ingrediente/create_ingrediente.html";
-	}
-	
-	@GetMapping("/administration/ingredienti/add_ingr")
-	public String addIngredienteToPiatto(Model model) {
-		return null;
 	}
 }

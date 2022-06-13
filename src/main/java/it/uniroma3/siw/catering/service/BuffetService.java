@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import it.uniroma3.siw.catering.model.Buffet;
 import it.uniroma3.siw.catering.model.Chef;
-import it.uniroma3.siw.catering.model.Piatto;
 import it.uniroma3.siw.catering.repository.BuffetRepository;
 
 @Service
@@ -52,8 +51,4 @@ public class BuffetService {
 		return buffetRepository.existsByNomeAndChef(buffet.getNome(), buffet.getChef());
 	}
 
-	public List<Piatto> getPiattiOfBuffet(Long id){
-		Buffet buffet = this.buffetRepository.findById(id).get();
-		return buffet.getPiatti();
-	}
 }

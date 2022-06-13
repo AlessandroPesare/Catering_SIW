@@ -1,38 +1,58 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head
-	th:replace="fragments/layout.html :: headerfiles(title='Elenco Buffets')">
+	th:replace="fragments/layout.html :: headerfiles(title='Catering SIW')">
 <title>Catering Service</title>
 </head>
-<div>
-	<h1>Catering Service</h1>
-	<h3>
-		<a>Roma</a>
-	</h3>
+<body
+	style="background: url(https://macellerialacarne.it/wp-content/uploads/2018/02/DSC_0098.jpg); background-size: cover; background-repeat: no-repeat;">
+	<div>
+		<h1 class="titolo2">Catering Service</h1>
+
+		<section>
+			<br>
+			<h3 class="sottotitolo2" align="center" style="font-size: 30px;">CHI
+				SIAMO</h3>
+			<br>
+			<p class="paragrafo">Catering Service &#232 un&#39impresa di
+				catering con oltre vent&#39 anni di esperienza nel settore della
+				ristorazione. Essa ha un piano di azione molto particolare, mette
+				infatti a disposizione dei vari locali la vasta gamma di alimenti
+				che prepara coniugando tradizione e qualit&#224. Alla base della
+				Catering Service c&#39 &#232 la cucina italiana, basata sulla famosa
+				e nutrizionale dieta Mediterranea. I fondatori operano in
+				collaborazione con uno gruppo di chef di fama nazionale e
+				internazionale che propongono dei buffet.Per poter vedere le ricette
+				e le descrizioni dei piatti proposti da questi grandi chef &#232
+				richiesto il login. L&#39 idea del sito &#232 quella di coinvolgere
+				l&#39 utente nel provare queste deliziose ricette, registrandoti
+				potrai anche vedere i piatti che storicamente sono amati dai nostri
+				clienti.L&#39 impresa si occupa di ogni minimo dettaglio
+				concentrando l&#39 attenzione sui clienti che scelgono i nostri sani
+				e gustosi piatti.</p>
+		</section>
+	</div>
 	<section>
-		<a th:href="@{/login}">Accedi</a> <a th:href="@{/register}">Registrati</a>
+		<span class="autenticazione"> <img class="immagine"
+			src="/images/logoCat.jpg"> <a th:href="@{/login}"
+			class="btn btn-info btn-sm twtr" target="_b">Accedi</a> <a
+			th:href="@{/register}" class="btn btn-info btn-sm twtr" target="_b">Registrati</a>
+		</span>
 	</section>
-</div>
-<section>
-	<p>Ti presentiamo il nostro servizio di catering adatto ad ogni
-		tipologia di evento, proponiamo una serie di buffet originali proposti
-		da chef di fama nazionale.</p>
-	<p>I prodotti che vengono utilizzati dagli chef sono di alta
-		qualit&#224, saremo felici di ricevere un feedback da parte vostra.</p>
-</section>
-<section>
-	<p>Chi siamo:</p>
-	<p>Nel 2018 decidiamo di far nascere il "Piccolo Buffet" in via
-		della Vasca Navale a Roma,l'idea imprenditoriale &#232 pensata come punto
-		di ristorazione self-service.L&apos azienda si afferma rapidamente
-		concentrando tutte le sue attenzioni sui clienti che, quotidianamente,
-		consumano pasti caldi e sani. L&#39 impegno costante nella scelta dei
-		prodotti, al fine di garantirne la variet&#224, conferma l&#39 ottima qualit&#224
-		che da sempre ha caratterizzato l&#39 azienda.
-	</p>
-	<p>
-		<a href="https://instagram.com" class="btn twtr" target="_b">Seguici
-			su Instagram</a>
-	</p>
-</section>
+	<section>
+		<h3 class="sottotitolo">Informazioni utili:</h3>
+		<p class=sottoparagrafo>Ci trovi in Via della Vasca Navale, 00146
+			Roma RM. Ti aspettiamo!</p>
+		<div class="container">
+			<iframe
+				src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d972.2833687343575!2d12.468208576602635!3d41.85627261611294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x13258a91678ebcb9%3A0x766783b79f6c889b!2sVia%20della%20Vasca%20Navale%2C%2000146%20Roma%20RM!3m2!1d41.8562552!2d12.4688958!5e0!3m2!1sit!2sit!4v1655040424433!5m2!1sit!2sit"
+				width="100%" height="350" style="border-radius: 10px;"
+				allowfullscreen="" loading="lazy"
+				referrerpolicy="no-referrer-when-downgrade"></iframe>
+		</div>
+		<a href="https://instagram.com" class="btn btn-info btn-sm twtr"
+			target="_b">Seguici su Instagram</a> <br>
+	</section>
+
+</body>
 </html>

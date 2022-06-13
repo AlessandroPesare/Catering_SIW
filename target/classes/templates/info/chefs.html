@@ -1,35 +1,42 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head
-	th:replace="fragments/layout.html :: headerfiles(title='Elenco Buffets')">
+	th:replace="fragments/layout.html :: headerfiles(title='Elenco Chef')">
 <meta charset="UTF-8" />
 <title>Catering Service</title>
 </head>
-<div>
+<body
+	style="background: url(https://cdn.hipwallpaper.com/i/11/93/mhCWjb.png); background-size: cover; background-repeat: no-repeat;">
 	<div>
-		<h1>Catering Service</h1>
+		<div>
+			<h1 class="titolo"> Catering Service</h1>
+			<br>
+		</div>
+		<div>
+			<h3>
+				<a th:href="@{/default}">Home</a>
+			</h3>
+		</div>
 	</div>
-	<div>
-		<a href="/indexUser">Home</a>
-	</div>
-</div>
-<section>
-	<p align="center">I nostri Chef di fama internazionale e i loro
-		gustosi buffet</p>
-	<ul>
-		<li th:each="chef : ${chefs}">
-			<p
-				th:text="${chef.nome} + ' ' + ${chef.cognome} + ', ' + ${chef.nazione}">Valentino
-				Rossi, Italia</p>
-			<ul>
-				<li th:each="buffet : ${chef.buffet}">
-					<div class="buffets">
-						<a th:text="${buffet.nome} + ', '"
-							th:href="@{administration/piatti/{id}(id=${buffet.id})}">...</a>
-						<a th:text="${buffet.descrizione}">Descrizione</a>
+	<section class="sezione-contenuto">
+		<h3 class = sottotitolo align="center">I nostri Chef di fama internazionale</h3>
+		<br> <br>
+		<div class="row">
+			<div class="col col-md-4" th:each="chef : ${chefs}">
+				<div class="card" style="width: 18rem; margin-bottom: 20px;">
+					<img class="card-img-top" src="/images/chef.jpeg"
+						alt="Card image cap">
+					<div class="card-body">
+						<h5 class="card-title"
+							th:text="${chef.nome} + ' ' + ${chef.cognome}">Nome Chef</h5>
+						<p class="card-text" th:text="'Nazione:' + ${chef.nazione}"></p>
+						<a th:href="@{/info/chef/}+${chef.id}" class="btn btn-primary">Dettagli
+							Chef</a>
 					</div>
-				</li>
-			</ul>
-		</li>
-	</ul>
-</section>
+				</div>
+			</div>
+		</div>
+	</section>
+	<br>
+	<br>
+</body>
 </html>

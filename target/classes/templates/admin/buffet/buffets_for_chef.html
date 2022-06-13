@@ -5,26 +5,19 @@
 <title>Catering Management System</title>
 </head>
 <body>
-	<nav>
-		<a>Catering Management System</a>
-		<div>
-			<ul>
-				<li><a>Buffet Management</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
-	<div>
+
+	<section class="sezione-contenuto">
 		<div>
 			<h1 th:text="'Elenco dei Buffet dello Chef ' + ${chef.cognome}">
 				Elenco dei Buffet dello Chef Rossi</h1>
 		</div>
-		<table>
+		<br>
+		<table class="table">
 			<thead>
 				<tr>
-					<th>Nome</th>
-					<th>Descrizione</th>
-					<th>Operazione</th>
+					<th scope="col">Nome</th>
+					<th scope="col">Descrizione</th>
+					<th scope="col">Operazione</th>
 				</tr>
 			</thead>
 
@@ -32,11 +25,11 @@
 				<tr th:each="buffet: ${buffets}">
 					<td th:text="${buffet.nome}"></td>
 					<td th:text="${buffet.descrizione}"></td>
-					<td><a
+					<td><a class="btn btn-danger"
 						th:href="@{/administration/buffets/del/{id}(id=${buffet.id})}">Delete</a>
-						<a
+						<a class="btn btn-warning"
 						th:href="@{/administration/piatti/new/{buffet_id}(buffet_id=${buffet.id})}">Add Piatto</a>
-						<a
+						<a class="btn btn-info"
 						th:href="@{/administration/piatti/buffet/{buffet_id}(buffet_id=${buffet.id})}">Guarda
 							i Piatti</a></td>
 				</tr>
@@ -47,6 +40,8 @@
 				<a th:href="@{/administration/buffets}">Back</a>
 			</div>
 		</div>
-	</div>
+	</section>
+	
+		<div th:replace="fragments/layout.html :: jsFiles"></div>
 </body>
 </html>

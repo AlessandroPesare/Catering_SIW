@@ -30,7 +30,6 @@ public class Buffet {
 	@OneToMany(mappedBy = "buffet",fetch = FetchType.EAGER,cascade = CascadeType.REMOVE)
 	private List<Piatto> piatti;
 
-	@NotBlank
 	private String nome;
 	
 	private String descrizione;

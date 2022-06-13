@@ -1,20 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/layout.html :: headerfiles(title='Elenco Buffets')">
+<head th:replace="fragments/layout.html :: headerfiles(title='Chef')">
 <meta charset="UTF-8" />
 <title>Dettagli chef</title>
 </head>
-<body>
-	<div>
-		<h4>Dettagli chef</h4>
+<body
+	style="background: url(https://www.antoninocannavacciuolo.it/site/wp-content/uploads/antoninocannavacciuolo_spaghettipolpo_desktop-2-scaled.jpg); background-size: cover; background-repeat: no-repeat;">
+
+	<section class="sezione-contenuto">
 		<div>
-			<span th:text="${chef.nome}">Paolo</span>
-			<span th:text="${chef.cognome}">Rossi</span>
-			<span th:text="${chef.nazione}">Italia</span>
+			<h1 class = "titolo" th:text="'Elenco dei Buffet dello Chef ' + ${chef.cognome}">
+				Elenco dei Buffet dello Chef Rossi</h1>
 		</div>
-	</div>
-	<footer>
-		<a href="/">Home</a>
-	</footer>
+		<br>
+		<table class="table">
+			<thead>
+				<tr>
+					<th class = "sottotitolo" scope="col">NOME</th>
+					<th class = "sottotitolo" scope="col">DESCRIZIONE</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="buffet: ${buffets}">
+					<td class = "sottotitolo" th:text="${buffet.nome}"></td>
+					<td class = "sottotitolo" th:text="${buffet.descrizione}"></td>
+				</tr>
+			</tbody>
+		</table>
+		<div>
+			<div>
+				<a th:href="@{/info/chefs}">Back</a>
+			</div>
+		</div>
+	</section>
+
+	<div th:replace="fragments/layout.html :: jsFiles"></div>
 </body>
 </html>
