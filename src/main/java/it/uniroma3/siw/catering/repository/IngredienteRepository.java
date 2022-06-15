@@ -8,4 +8,6 @@ public interface IngredienteRepository extends CrudRepository<Ingrediente, Long>
 
 	public boolean existsByNomeAndOrigine(String nome, String origine);
 
+	public Ingrediente findByNome(String nome);
+
 }

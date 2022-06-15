@@ -7,7 +7,7 @@
 <body
 	style="background: url(https://macellerialacarne.it/wp-content/uploads/2018/02/DSC_0098.jpg); background-size: cover; background-repeat: no-repeat;">
 	<div>
-		<h1 class="titolo2">Catering Service</h1>
+		<h1 class="titolo">Catering Service</h1>
 
 		<section>
 			<br>
@@ -34,10 +34,10 @@
 	</div>
 	<section>
 		<span class="autenticazione"> <img class="immagine"
-			src="/images/logoCat.jpg"> <a th:href="@{/login}"
-			class="btn btn-info btn-sm twtr" target="_b">Accedi</a> <a
-			th:href="@{/register}" class="btn btn-info btn-sm twtr" target="_b">Registrati</a>
-		</span>
+			src="/images/logoCat.jpg"> <span class="bottone"> <a
+				th:href="@{/login}" class="btn btn-info btn-sm twtr" target="_b">Accedi</a>
+		</span> <span class="bottone"> <a th:href="@{/register}"
+				class="btn btn-info btn-sm twtr" target="_b">Registrati</a></span>
 	</section>
 	<section>
 		<h3 class="sottotitolo">Informazioni utili:</h3>
@@ -50,8 +50,11 @@
 				allowfullscreen="" loading="lazy"
 				referrerpolicy="no-referrer-when-downgrade"></iframe>
 		</div>
-		<a href="https://instagram.com" class="btn btn-info btn-sm twtr"
-			target="_b">Seguici su Instagram</a> <br>
+		<div class="bottone">
+			<a class="btn btn-info btn-sm twtr" href="https://instagram.com"
+				target="_b">Seguici su Instagram</a>
+		</div>
+		<br>
 	</section>
 
 </body>

@@ -56,14 +56,21 @@ public class IngredienteController {
 	@PostMapping("/administration/ingredienti/{idPiatto}")
 	public String addIngrediente(@Valid @ModelAttribute("ingrediente") Ingrediente ingrediente,@PathVariable("idPiatto") Long id, BindingResult bindingResults, Model model) {
 		this.ingredienteValidator.validate(ingrediente, bindingResults);
+		Piatto p = piattoService.findById(id);
 		if(!bindingResults.hasErrors()) {
-			Piatto p = piattoService.findById(id);
 			p.getIngredienti().add(ingrediente);
-			piattoService.save(p);
-			model.addAttribute("ingrediente", model);
+			piattoService.save(p); //create ingrediente nuovo
+			model.addAttribute("ingrediente", new Ingrediente());
 			return "redirect:/administration/ingredienti";
 		}
-		else
-			return "admin/ingrediente/create_ingrediente.html";
+		return "admin/ingrediente/create_ingrediente.html";
 	}
+	
+	@GetMapping("/administration/ingredienti/del/{id}")
+	public String deleteIngrediente(@PathVariable Long id) {
+		ingredienteService.deleteIngrediente(id);
+		return "redirect:/administration/ingredienti";
+	}
+
+	
 }

@@ -1,24 +1,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head
 	th:replace="fragments/layout.html :: headerfiles(title='Elenco Chef')">
-<meta charset="UTF-8" />
-<title>Catering Service</title>
 </head>
 <body
 	style="background: url(https://cdn.hipwallpaper.com/i/11/93/mhCWjb.png); background-size: cover; background-repeat: no-repeat;">
 	<div>
 		<div>
-			<h1 class="titolo"> Catering Service</h1>
+			<h1 class="titolo">Catering Service</h1>
 			<br>
-		</div>
-		<div>
-			<h3>
-				<a th:href="@{/default}">Home</a>
-			</h3>
 		</div>
 	</div>
 	<section class="sezione-contenuto">
-		<h3 class = sottotitolo align="center">I nostri Chef di fama internazionale</h3>
+		<h3 class=sottotitolo align="center">I nostri Chef di fama
+			internazionale</h3>
 		<br> <br>
 		<div class="row">
 			<div class="col col-md-4" th:each="chef : ${chefs}">
@@ -36,7 +30,10 @@
 			</div>
 		</div>
 	</section>
-	<br>
-	<br>
+	<br><br><br><br><br><br><br><br><br><br>
+	<div th:replace="fragments/layout.html :: jsFiles"></div>
+	<div class="bottone">
+		<a class="btn btn-info btn-sm twtr" href="/default" target="_b">Back</a>
+	</div>
 </body>
 </html>

@@ -9,32 +9,33 @@
 
 	<section class="sezione-contenuto">
 		<div>
-			<h1 class = "titolo" th:text="'Elenco dei Buffet dello Chef ' + ${chef.cognome}">
+			<h1 class="titolo"
+				th:text="'Elenco dei Buffet dello Chef ' + ${chef.cognome}">
 				Elenco dei Buffet dello Chef Rossi</h1>
 		</div>
 		<br>
 		<table class="table">
 			<thead>
 				<tr>
-					<th class = "sottotitolo" scope="col">NOME</th>
-					<th class = "sottotitolo" scope="col">DESCRIZIONE</th>
+					<th class="sottotitolo" scope="col">NOME</th>
+					<th class="sottotitolo" scope="col">DESCRIZIONE</th>
 				</tr>
 			</thead>
 
 			<tbody>
 				<tr th:each="buffet: ${buffets}">
-					<td class = "sottotitolo" th:text="${buffet.nome}"></td>
-					<td class = "sottotitolo" th:text="${buffet.descrizione}"></td>
+					<td class="sottotitolo" th:text="${buffet.nome}"></td>
+					<td class="sottotitolo" th:text="${buffet.descrizione}"></td>
 				</tr>
 			</tbody>
 		</table>
-		<div>
-			<div>
-				<a th:href="@{/info/chefs}">Back</a>
-			</div>
+		<br>
+		<br>
+		<br>
+		<div th:replace="fragments/layout.html :: jsFiles"></div>
+		<div class="bottone">
+			<a class="btn btn-info btn-sm twtr" href="/info/chefs" target="_b">Back</a>
 		</div>
 	</section>
-
-	<div th:replace="fragments/layout.html :: jsFiles"></div>
 </body>
 </html>

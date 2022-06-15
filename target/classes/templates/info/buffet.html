@@ -1,19 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/layout.html :: headerfiles(title='Elenco Buffets')">
-<meta charset="UTF-8" />
-<title>Dettagli Buffet</title>
-</head>
-<body>
-	<div>
-		<h2>Dettagli Buffet</h2>
+<head th:replace="fragments/layout.html :: headerfiles(title='Buffet')"></head>
+<body
+	style="background: url(https://www.ilparcodeipoeti.it/slide/buffet-01.jpg); background-size: cover; background-repeat: no-repeat;">
+
+	<section class="sezione-contenuto">
 		<div>
-			<div>Nome buffet:<span th:text="${buffet.nome}"></span></div>
-			<div>Descrizione:<span th:text="${buffet.descrizione}"></span></div>
+			<h1 class="titolo"
+				th:text="'Elenco dei piatti del buffet ' + ${buffet.nome}">
+				Elenco degli ingredienti del buffet</h1>
 		</div>
-	</div>
-	<footer>
-		<a href="/info/buffets">Back</a>
-	</footer>
+		<br>
+		<table class="table">
+			<thead>
+				<tr>
+					<th class="sottotitolo" scope="col">NOME</th>
+					<th class="sottotitolo" scope="col">DESCRIZIONE</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="buffet: ${buffets}">
+					<td class="sottotitolo" th:text="${buffet.nome}"></td>
+					<td class="sottotitolo" th:text="${buffet.descrizione}"></td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<br>
+		<br>
+		<div th:replace="fragments/layout.html :: jsFiles"></div>
+		<div class="bottone">
+			<a class="btn btn-info btn-sm twtr" href="/info/buffets" target="_b">Back</a>
+		</div>
+	</section>
 </body>
 </html>

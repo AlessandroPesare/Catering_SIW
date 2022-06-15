@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/layout.html :: headerfiles(title='Home Page: Catering Management')">
+<head
+	th:replace="fragments/layout.html :: headerfiles(title='Home Page: Catering Management')">
 </head>
 <body
-	style="background: url(https://t3.ftcdn.net/jpg/03/48/55/20/240_F_348552050_uSbrANL65DNj21FbaCeswpM33mat1Wll.jpg); background-size: cover; background-repeat: no-repeat;">
+	style="background: url(https://img.freepik.com/premium-photo/desktop-source-code-wallpaper-by-computer-language-with-coding-programming_33771-595.jpg); background-size: cover; background-repeat: no-repeat;">
 	<section>
-		<h1 class="titolo2">The Catering Company</h1>
+		<div class = "sfondo-admin">
+		<h1 class="titolo">The Catering Company</h1>
 		<nav>
 			<div>
-				<ul>
-					<li><a href="/"> HOME </a></li>
-					<li><a th:href="@{/administration/chefs}"> CHEFS MANAGMENT
-					</a></li>
-					<li><a th:href="@{/administration/buffets}"> BUFFETS
+				<ul class="titoletto">
+					<li class="titoletto"><a th:href="@{/administration/chefs}">
+							CHEFS MANAGMENT </a></li>
+					<li class="titoletto"><a th:href="@{/administration/buffets}">
+							BUFFETS MANAGMENT</a></li>
+					<li class="titoletto"><a th:href="@{/administration/piatti}">
+							PIATTI MANAGMENT</a></li>
+					<li class="titoletto"><a
+						th:href="@{/administration/ingredienti}"> INGREDIENTI
 							MANAGMENT</a></li>
-					<li><a th:href="@{/administration/piatti}"> PIATTI
-							MANAGMENT</a></li>
-					<li><a th:href="@{/administration/ingredienti}">
-							INGREDIENTI MANAGMENT</a></li>
 				</ul>
-				<a th:href="@{/logout}"><button type="submit">Log out</button></a>
+				<a th:href="@{/logout}"><button type="submit"  class="btn btn-primary">Log out</button></a> 
 			</div>
 		</nav>
+		</div>
 	</section>
 </body>
 </html>

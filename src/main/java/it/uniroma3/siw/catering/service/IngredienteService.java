@@ -9,12 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.uniroma3.siw.catering.model.Ingrediente;
+import it.uniroma3.siw.catering.model.Piatto;
 import it.uniroma3.siw.catering.repository.IngredienteRepository;
 
 @Service
 public class IngredienteService {
 	
 	@Autowired private IngredienteRepository ingredienteRepository;
+	@Autowired private PiattoService piattoService;
 		
 	@Transactional
 	public void save(Ingrediente ingrediente) {
@@ -37,4 +39,23 @@ public class IngredienteService {
 		return ingredienteRepository.existsByNomeAndOrigine(ingrediente.getNome(), ingrediente.getOrigine());
 
 	}
+
+	public void deleteIngrediente(Long id) {
+		List<Piatto> piatti = piattoService.findAll();
+		for(Piatto piatto: piatti){
+			for(Ingrediente i: piatto.getIngredienti()) {
+				if(i.getId()==id) {
+					piatto.getIngredienti().remove(i);
+					piattoService.save(piatto);
+					break;
+				}
+			}
+		}
+		this.ingredienteRepository.deleteById(id);
+	}
+
+	public Ingrediente findByNome(String nome) {
+		return this.ingredienteRepository.findByNome(nome);
+	}
+
 }

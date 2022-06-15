@@ -1,60 +1,56 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/layout.html :: headerfiles(title='Elenco Buffets')">
+<head
+	th:replace="fragments/layout.html :: headerfiles(title='Elenco Buffets')">
 <title>Catering Management System</title>
 </head>
-<body>
-	<nav>
-		<a>Catering Management System</a>
+<body
+	style="background: url(https://www.antimodandrea.it/public/foto/apericena-1.jpg); background-size: 100%; background-repeat: no-repeat;">
+	<section class=sezione-contenuto>
 		<div>
-			<ul>
-				<li>Buffet Management</li>
-			</ul>
-		</div>
-	</nav>
-	<br>
-	<br>
-	<div>
-		<div>
-			<h1>Insert New Buffet</h1>
 			<div>
-				<form
-					th:action="@{/administration/buffets/}+${chef_id}"
-					th:object="${buffet}" method="POST">
-					<div th:if="${#fields.hasGlobalErrors()}">
-						<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">Errore
-							globale</p>
-					</div>
-					<div>
-						<label>Nome</label> <input type="text" name="nome"
-							th:field="*{nome}" class="form-control"
-							placeholder="Inserisci il nome" />
-						<div>
-							<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+				<h1>Insert New Buffet</h1>
+				<div>
+					<form th:action="@{/administration/buffets/}+${chef_id}"
+						th:object="${buffet}" method="POST">
+						<div th:if="${#fields.hasGlobalErrors()}"
+							class="alert alert-danger" role="alert">
+							<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">Errore
+								globale</p>
 						</div>
-					</div>
-
-					<div class="form-group">
-						<label>Descrizione</label> <input type="text" name="descrizione"
-							th:field="*{descrizione}" class="form-control"
-							placeholder="Inserisci la descrizione" />
 						<div>
-							<span th:if="${#fields.hasErrors('descrizione')}"
-								th:errors="*{descrizione}"></span>
+							<label>Nome</label> <input type="text" name="nome"
+								th:field="*{nome}" class="form-control"
+								placeholder="Inserisci il nome" />
+							<div style="color: red; font-weight: 700;">
+								<p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
+							</div>
 						</div>
-					</div>
-					<div>
-						<button type="submit">Invia</button>
-					</div>
-				</form>
 
+						<div class="form-group">
+							<label>Descrizione</label> <input type="text" name="descrizione"
+								th:field="*{descrizione}" class="form-control"
+								placeholder="Inserisci la descrizione" />
+							<div>
+								<span th:if="${#fields.hasErrors('descrizione')}"
+									th:errors="*{descrizione}"></span>
+							</div>
+						</div>
+						<div>
+							<button type="submit" class="btn btn-primary">Invia</button>
+						</div>
+					</form>
+
+				</div>
 			</div>
 		</div>
-	</div>
-	<div>
 		<div>
-			<a th:href="@{/administration/buffets}"> Back</a>
+			<br><br><br><br>
+			<div class="bottone">
+				<a class="btn btn-info btn-sm twtr" href="/administration/chefs"
+					target="_b">Back</a>
+			</div>
 		</div>
-	</div>
+	</section>
 </body>
 </html>

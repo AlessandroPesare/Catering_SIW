@@ -23,10 +23,10 @@ public class PiattoValidator implements Validator {
 		if(this.piattoService.alredyExists((Piatto) target)) {
 			errors.reject("piatto.duplicato");
 		}
-		Piatto p = (Piatto)target;
+/*		Piatto p = (Piatto)target;
 		if(p.getIngredienti() == null) {
 			errors.reject("piatto.vuoto");
-		}
+		}*/
 	}
 	
 	

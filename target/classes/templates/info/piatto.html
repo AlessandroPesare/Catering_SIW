@@ -2,18 +2,40 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/layout.html :: headerfiles(title='Piatto')">
 <meta charset="UTF-8" />
-<title>Dettagli chef</title>
 </head>
-<body>
-	<div>
-		<h4>Dettagli Piatto</h4>
+<body
+	style="background: url(https://www.pepecatering.it/images/catering-aziendali-roma/menu/cocktail/catering-aziendali-roma-cocktail.jpg); background-size: cover; background-repeat: no-repeat;">
+
+	<section class="sezione-contenuto">
 		<div>
-			<span th:text="${piatto.nome}">..</span>
-			<span th:text="${piatto.descrizione}">..</span>
+			<h1 class="titolo"
+				th:text="'Elenco degli ingredienti del piatto ' + ${piatto.nome}">
+				Elenco degli ingredienti del piatto</h1>
 		</div>
-	</div>
-	<footer>
-		<a href="/info/piatti">Back</a>
-	</footer>
+		<br>
+		<table class="table">
+			<thead>
+				<tr>
+					<th class="sottotitolo" scope="col">NOME</th>
+					<th class="sottotitolo" scope="col">ORIGINE</th>
+					<th class="sottotitolo" scope="col">DESCRIZIONE</th>
+
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="ingrediente: ${ingredienti}">
+					<td class="sottotitolo" th:text="${ingrediente.nome}"></td>
+					<td class="sottotitolo" th:text="${ingrediente.origine}"></td>
+					<td class="sottotitolo" th:text="${ingrediente.descrizione}"></td>
+				</tr>
+			</tbody>
+		</table>
+		<br><br><br>
+		<div th:replace="fragments/layout.html :: jsFiles"></div>
+		<div class="bottone">
+			<a class="btn btn-info btn-sm twtr" href="/info/piatti" target="_b">Back</a>
+		</div>
+	</section>
 </body>
 </html>

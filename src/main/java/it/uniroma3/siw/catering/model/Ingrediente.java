@@ -16,7 +16,6 @@ public class Ingrediente {
 	@NotBlank
 	private String nome;
 	
-	@NotBlank
 	private String origine;
 	
 	private String descrizione;

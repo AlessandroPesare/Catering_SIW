@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8" />
-<title>Registration Successful Page</title>
+<head
+	th:replace="fragments/layout.html :: headerfiles(title='Registration successful')">
+<title>Catering Service</title>
 </head>
-<body>
-	<div>
-		<h4>Registrazione completata con successo. <br> </h4>
-		<h4>Congratulazioni!</h4>
-	</div>
-	<footer>
-		<a href="/">Home</a>
-	</footer>
+<body
+	style="background: url(https://66.media.tumblr.com/tumblr_m7v0lxN0po1rn95k2o1_500.gif); background-size: cover; background-repeat: no-repeat;">
+
+	<section class="sezione-contenuto">
+		<div>
+			<h3 class="titoletto">
+				Registrazione completata con successo.Congratulazioni! <br>
+			</h3>
+		</div>
+		<div class="bottone">
+			<a href="/" class="btn btn-info btn-sm twtr" target="_b">Home</a>
+		</div>
+	</section>
 </body>
 </html>

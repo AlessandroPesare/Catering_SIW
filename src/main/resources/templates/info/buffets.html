@@ -5,20 +5,15 @@
 <title>Catering Service</title>
 </head>
 <body
-	style="background: url(https://wallpaperforu.com/wp-content/uploads/2020/10/food-wallpaper-20100313201245.jpg); background-size: cover; background-repeat: no-repeat;">
+	style="background: url(https://www.inmilano.it/wp-content/uploads/2017/05/catering-1.jpg); background-size: cover; background-repeat: no-repeat;">
 	<div>
 		<div>
-			<h1 class="titolo"> Catering Service</h1>
+			<h1 class="titolo">Catering Service</h1>
 			<br>
-		</div>
-		<div>
-			<h3>
-				<a th:href="@{/default}">Home</a>
-			</h3>
 		</div>
 	</div>
 	<section class="sezione-contenuto">
-		<h3 class = sottotitolo align="center">I nostri armoniosi Buffet</h3>
+		<h3 class=sottotitolo align="center">I nostri armoniosi Buffet</h3>
 		<br> <br>
 		<div class="row">
 			<div class="col col-md-4" th:each="buffet : ${buffets}">
@@ -26,16 +21,19 @@
 					<img class="card-img-top" src="/images/buffet.jpg"
 						alt="Card image cap">
 					<div class="card-body">
-						<h5 class="card-title"
-							th:text="${buffet.nome}">Nome Buffet</h5>
-						<a th:href="@{/info/buffet/}+${buffet.id}"class="btn btn-primary">Dettagli
+						<h5 class="card-title" th:text="${buffet.nome}">Nome Buffet</h5>
+						<a th:href="@{/info/buffet/}+${buffet.id}" class="btn btn-primary">Dettagli
 							Buffet</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+	<br><br><br><br><br><br><br><br><br>
 	<br>
-	<br>
+	<div th:replace="fragments/layout.html :: jsFiles"></div>
+	<div class="bottone">
+		<a class="btn btn-info btn-sm twtr" href="/default" target="_b">Back</a>
+	</div>
 </body>
 </html>

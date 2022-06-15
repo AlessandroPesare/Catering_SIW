@@ -9,16 +9,16 @@ body {
 	overflow-x: hidden;
 }
 
-.titolo2 {
+.titolo {
 	font-family: Fantasy;
 	color: DarkSlateBlue;
 	background-color: lightgray;
 }
 
-.titolo {
-	font-family: Fantasy;
-	color: PapayaWhip;
-	background-color: Peru;
+.titoletto {
+	color: DarkSlateBlue;
+	font-family: Lucida Handwriting;
+	background-color: lightgray;
 }
 
 .sottotitolo2 {
@@ -46,6 +46,10 @@ body {
 	background: ghostwhite;
 }
 
+.bottone {
+	font-family: Lucida Handwriting;
+}
+
 .immagine {
 	border: 10px;
 	padding: 10px;
@@ -61,18 +65,24 @@ body {
 }
 
 .navbar-brand {
-	font-family: Times New Roman;
+	font-family: Garamond;
 	color: white;
 }
 
 .sezione-contenuto {
 	padding: 5% 8%;
+	color: DarkSlateBlue;
+	font-family: Cursive;
 }
 
 .sezione-footer {
-	background: Peru;
-	color: #fff; /* colore bianco*/
+	color: DarkSlateBlue;
+	background: lightgray;
 	padding: 20px;
 	display: flex;
 	justify-content: center;
+}
+
+.sfondo-admin {
+	background: black;
 }

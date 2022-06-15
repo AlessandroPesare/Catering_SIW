@@ -4,16 +4,18 @@
 	th:replace="fragments/layout.html :: headerfiles(title='Elenco Buffets')">
 <title>Catering Management System</title>
 </head>
-<body>
+<body
+	style="background: url(https://previews.123rf.com/images/svetazarzamora/svetazarzamora1711/svetazarzamora171100005/90463544-tavolo-da-antipasti-con-stuzzichini-italiani-e-vino-in-bicchieri-scheda-del-salgemma-sopra-priorit%C3%A0-.jpg); background-size: cover; background-repeat: no-repeat;">
 
 	<section class="sezione-contenuto">
 		<div>
-			<h1 th:text="'Elenco dei Buffet dello Chef ' + ${chef.cognome}">
+			<h1 class="titolo"
+				th:text="'Elenco dei Buffet dello/a Chef ' + ${chef.cognome}">
 				Elenco dei Buffet dello Chef Rossi</h1>
 		</div>
 		<br>
 		<table class="table">
-			<thead>
+			<thead class="titoletto">
 				<tr>
 					<th scope="col">Nome</th>
 					<th scope="col">Descrizione</th>
@@ -21,27 +23,26 @@
 				</tr>
 			</thead>
 
-			<tbody>
+			<tbody class="titoletto">
 				<tr th:each="buffet: ${buffets}">
 					<td th:text="${buffet.nome}"></td>
 					<td th:text="${buffet.descrizione}"></td>
 					<td><a class="btn btn-danger"
 						th:href="@{/administration/buffets/del/{id}(id=${buffet.id})}">Delete</a>
 						<a class="btn btn-warning"
-						th:href="@{/administration/piatti/new/{buffet_id}(buffet_id=${buffet.id})}">Add Piatto</a>
-						<a class="btn btn-info"
+						th:href="@{/administration/piatti/new/{buffet_id}(buffet_id=${buffet.id})}">Add
+							Piatto</a> <a class="btn btn-info"
 						th:href="@{/administration/piatti/buffet/{buffet_id}(buffet_id=${buffet.id})}">Guarda
 							i Piatti</a></td>
 				</tr>
 			</tbody>
 		</table>
 		<div>
-			<div>
-				<a th:href="@{/administration/buffets}">Back</a>
+			<div class="bottone">
+				<a class="btn btn-info btn-sm twtr" href="/administration/chefs" target="_b">Back</a>
 			</div>
 		</div>
 	</section>
-	
-		<div th:replace="fragments/layout.html :: jsFiles"></div>
+	<div th:replace="fragments/layout.html :: jsFiles"></div>
 </body>
 </html>

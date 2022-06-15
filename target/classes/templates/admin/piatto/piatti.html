@@ -1,40 +1,48 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="ISO-8859-1">
+<head
+	th:replace="fragments/layout.html :: headerfiles(title='Elenco Piatti')">
 <title>Catering Management System</title>
 </head>
-<body>
-	<div>
-		<h1>Catering Management System</h1>
-	</div>
-	<div>
+<body
+	style="background: url(https://www.starbene.it/content/uploads/2020/07/riso-curry.jpg); background-size: cover; background-repeat: no-repeat;">
+	<section class="sezione-contenuto">
 		<div>
-			<h2>Elenco dei piatti</h2>
+
+			<h1 class="titolo">Catering Management System</h1>
 		</div>
-		<table>
-			<thead>
-				<tr>
-					<th>Nome</th>
-					<th>Descrizione</th>
-					<th>Operazione</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="piatto: ${piatti}">
-					<td th:text="${piatto.nome}"></td>
-					<td th:text="${piatto.descrizione}"></td>
-					<td>
-						<a th:href="@{/administration/piatti/del/{id}(id=${piatto.id})}">Delete</a>
-						<a th:href="@{/administration/ingredienti/new/{piatto_id}(piatto_id=${piatto.id})}">Add Piatto</a>
-						<a th:href="@{/administration/ingredienti/piatto/{piatto_id}(piatto_id=${piatto.id})}">Visualizza i Piatti</a>			
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<div>
 			<div>
-				<a th:href="@{/default}">Back</a>
+				<h2 class="titoletto">Elenco dei piatti</h2>
+			</div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col" class="titoletto">Nome</th>
+						<th scope="col" class="titoletto">Descrizione</th>
+						<th scope="col" class="titoletto">Operazione</th>
+					</tr>
+				</thead>
+				<tbody class="titoletto">
+					<tr th:each="piatto: ${piatti}">
+						<td th:text="${piatto.nome}"></td>
+						<td th:text="${piatto.descrizione}"></td>
+						<td><a class="btn btn-danger"
+							th:href="@{/administration/piatti/del/{id}(id=${piatto.id})}">Delete</a>
+							<a class="btn btn-warning"
+							th:href="@{/administration/ingredienti/new/{piatto_id}(piatto_id=${piatto.id})}">Add
+								Ingrediente</a> <a class="btn btn-info"
+							th:href="@{/administration/ingredienti/piatto/{piatto_id}(piatto_id=${piatto.id})}">Visualizza
+								gli ingredienti</a></td>
+					</tr>
+				</tbody>
+			</table>
+			<div th:replace="fragments/layout.html :: jsFiles"></div>
+			<div class="bottone">
+				<a class="btn btn-info btn-sm twtr" href="/default" target="_b">Back</a>
 			</div>
 		</div>
+	</section>
 </body>
+
 </html>

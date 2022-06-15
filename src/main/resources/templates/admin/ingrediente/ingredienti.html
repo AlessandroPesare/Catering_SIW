@@ -1,38 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="ISO-8859-1">
+<head
+th:replace="fragments/layout.html :: headerfiles(title='Elenco
+Ingredienti completo')">
 <title>Catering Management System</title>
 </head>
-<body>
-	<div>
-		<h1>Catering Management System</h1>
-	</div>
-	<div>
+<body
+	style="background: url(https://caffeportofino.it/wp-content/uploads/2017/07/ingredienti-tiramisu.jpg); background-size: cover; background-repeat: no-repeat;">
+	<section class="sezione-contenuto">
 		<div>
-			<h2>Elenco ingredienti</h2>
+			<h1 class = "titolo">Catering Management System</h1>
 		</div>
-		<table>
-			<thead>
-				<tr>
-					<th>Nome</th>
-					<th>Origine</th>
-					<th>Descrizione</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="ingrediente: ${ingredienti}">
-					<td th:text="${ingrediente.nome}"></td>
-					<td th:text="${ingrediente.origine}"></td>
-					<td th:text="${ingrediente.descrizione}"></td>
-					<td><a
-						th:href="@{/administration/ingredienti/del/{id}(id=${ingrediente.id})}">Delete</a>
-				</tr>
-			</tbody>
-		</table>
 		<div>
-			<a th:href="@{/default}">Back</a>
+			<div>
+				<h2 class = "titoletto">Elenco ingredienti</h2>
+			</div>
+			<table class = "table">
+				<thead class = "titoletto">
+					<tr>
+						<th scope="col">Nome</th>
+						<th scope="col">Origine</th>
+						<th scope="col">Descrizione</th>
+						<th scope="col">Operazione</th>
+					</tr>
+				</thead>
+				<tbody class = "titoletto">
+					<tr th:each="ingrediente: ${ingredienti}">
+						<td th:text="${ingrediente.nome}"></td>
+						<td th:text="${ingrediente.origine}"></td>
+						<td th:text="${ingrediente.descrizione}"></td>
+						<td><a class="btn btn-danger" 
+							th:href="@{/administration/ingredienti/del/{id}(id=${ingrediente.id})}">Delete</a>
+					</tr>
+				</tbody>
+			</table>
+			<div th:replace="fragments/layout.html :: jsFiles"></div>
+			<div class="bottone">
+				<a class="btn btn-info btn-sm twtr" href="/default" target="_b">Back</a>
+			</div>
 		</div>
-	</div>
+	</section>
 </body>
 </html>

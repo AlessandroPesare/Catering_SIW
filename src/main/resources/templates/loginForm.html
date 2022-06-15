@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head
-	th:replace="fragments/layout.html :: headerfiles(title='Home Page: Catering')">
+	th:replace="fragments/layout.html :: headerfiles(title='Login Page')">
 </head>
-<body style="background: url(http://www.cateringlabreva.it/i/gallery/business-lunch-00.jpg); background-size: cover; background-repeat: no-repeat;">
+<body
+	style="background: url(https://www.salepepe.it/files/2014/02/buffet-1140x636.jpg); background-size: 100%; background-repeat: no-repeat;">
 	<header th:replace="fragments/layout.html :: navMenu"> </header>
 	<section class="sezione-contenuto">
 		<form th:action="@{/login}" method="post">
 			<div class="form-group">
-				<label for="username">Username:</label> <input class="form-control"
-					id="username" placeholder="Enter Username" name="username">
+				<label class="titoletto" for="username">Username:</label> <input
+					class="form-control" id="username" placeholder="Enter Username"
+					name="username">
 			</div>
 			<div class="form-group">
-				<label for="password">Password</label> <input type="password"
-					class="form-control" id="password" placeholder="Password"
-					name="password">
+				<label class="titoletto" for="password">Password</label> <input
+					type="password" class="form-control" id="password"
+					placeholder="Password" name="password">
 			</div>
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
 	</section>
 	<div th:replace="fragments/layout.html :: jsFiles"></div>
 </body>
-
 </html>

@@ -1,48 +1,52 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="ISO-8859-1">
+<head
+	th:replace="fragments/layout.html :: headerfiles(title='Elenco Chef')">
 <title>Catering Management System</title>
 </head>
-<body>
-	<div>
-		<h1>Catering Management System</h1>
-	</div>
-	<div>
+<body
+	style="background: url(https://www.cercalavoro.it/wp-content/uploads/2021/02/diventare-chef.jpg.webp); background-size: cover; background-repeat: no-repeat;">
+	<section class="sezione-contenuto">
 		<div>
-			<h2>Elenco degli Chef</h2>
+			<h1 class="titolo">Catering Management System</h1>
 		</div>
-		<div>
+		<div class = "titoletto">
 			<div>
-				<a th:href="@{/administration/chefs/new}">Add Chef</a>
+				<h2>Elenco degli Chef</h2>
+			</div>
+			<div>
+				<div>
+					<a th:href="@{/administration/chefs/new}">Add
+						Chef</a>
+				</div>
+			</div>
+			<table class="table">
+				<thead class="titoletto">
+					<tr>
+						<th scope="col">Nome</th>
+						<th scope="col">Cognome</th>
+						<th scope="col">Nazione</th>
+						<th scope="col">Operazione</th>
+					</tr>
+				</thead>
+				<tbody class="titoletto">
+					<tr th:each="chef: ${chefs}">
+						<td th:text="${chef.nome}"></td>
+						<td th:text="${chef.cognome}"></td>
+						<td th:text="${chef.nazione}"></td>
+						<td>
+							<a class="btn btn-danger" th:href="@{/administration/chefs/del/{id}(id=${chef.id})}">Delete</a>
+							<a class="btn btn-warning" th:href="@{/administration/buffets/new/{chef_id}(chef_id=${chef.id})}">AddBuffet</a>
+							<a class="btn btn-info" th:href="@{/administration/buffets/chef/{chef_id}(chef_id=${chef.id})}">Visualizza i Buffet</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div th:replace="fragments/layout.html :: jsFiles"></div>
+			<div class="bottone">
+				<a class="btn btn-info btn-sm twtr" href="/default" target="_b">Back</a>
 			</div>
 		</div>
-		<table>
-			<thead>
-				<tr>
-					<th>Nome</th>
-					<th>Cognome</th>
-					<th>Nazione</th>
-					<th>Operazione</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="chef: ${chefs}">
-					<td th:text="${chef.nome}"></td>
-					<td th:text="${chef.cognome}"></td>
-					<td th:text="${chef.nazione}"></td>
-					<td>
-						<a th:href="@{/administration/chefs/edit/{id}(id=${chef.id})}">Update</a>
-						<a th:href="@{/administration/chefs/del/{id}(id=${chef.id})}">Delete</a>
-						<a th:href="@{/administration/buffets/new/{chef_id}(chef_id=${chef.id})}">Add Buffet</a>
-						<a th:href="@{/administration/buffets/chef/{chef_id}(chef_id=${chef.id})}">Visualizza i Buffet</a>			
-					</td>
-				</tr>
-			</tbody>
-		</table>
-			<div>
-				<a th:href="@{/default}">Back</a>
-			</div>
-		</div>
+	</section>
 </body>
 </html>
