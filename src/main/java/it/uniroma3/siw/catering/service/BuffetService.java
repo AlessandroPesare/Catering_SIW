@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import it.uniroma3.siw.catering.model.Buffet;
 import it.uniroma3.siw.catering.model.Chef;
+import it.uniroma3.siw.catering.model.Piatto;
 import it.uniroma3.siw.catering.repository.BuffetRepository;
 
 @Service
@@ -49,6 +50,11 @@ public class BuffetService {
 
 	public boolean alreadyExists(Buffet buffet) {
 		return buffetRepository.existsByNomeAndChef(buffet.getNome(), buffet.getChef());
+	}
+	
+	public List<Piatto> getPiattiOfBuffet(Long id){
+		Buffet b = this.buffetRepository.findById(id).get();
+		return b.getPiatti();
 	}
 
 }

@@ -52,4 +52,9 @@ public class PiattoService {
 	public boolean alredyExists(Piatto piatto) {
 		return this.piattoRepository.existsByNomeAndBuffet(piatto.getNome(), piatto.getBuffet());
 	}
+
+	public List<Ingrediente> getIngredientiOfPiatto(Long id){
+		Piatto p = this.piattoRepository.findById(id).get();
+		return p.getIngredienti();
+	}
 }

@@ -20,9 +20,9 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="buffet: ${buffets}">
-					<td class="sottotitolo" th:text="${buffet.nome}"></td>
-					<td class="sottotitolo" th:text="${buffet.descrizione}"></td>
+				<tr th:each="piatto: ${piatti}">
+					<td class="sottotitolo" th:text="${piatto.nome}"></td>
+					<td class="sottotitolo" th:text="${piatto.descrizione}"></td>
 				</tr>
 			</tbody>
 		</table>

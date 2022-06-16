@@ -9,37 +9,37 @@
 	<section class=sezione-contenuto>
 		<div>
 			<div>
-				<h1>Insert New Chef</h1>
+				<h1 class="titolo">Insert New Chef</h1>
 				<div>
 					<form th:action="@{/administration/chefs}" th:object="${chef}"
 						method="POST">
-						<div th:if="${#fields.hasGlobalErrors()}">
+						<div style="color: red; font-weight: 900;" th:if="${#fields.hasGlobalErrors()}" class="alert alert-danger" role="alert">
 							<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">Errore
 								globale</p>
 						</div>
-						<div>
-							<label>Nome</label> <input type="text" name="nome"
+						<div class = "form-group">
+							<label class = "titoletto">Nome</label> <input type="text" name="nome"
 								th:field="*{nome}" class="form-control"
 								placeholder="Inserisci il nome" />
-							<div>
+							<div style="color: red; font-weight: 700;">
 								<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label>Cognome</label> <input type="text" name="cognome"
+							<label class = "titoletto">Cognome</label> <input type="text" name="cognome"
 								th:field="*{cognome}" class="form-control"
 								placeholder="Inserisci il cognome" />
-							<div>
+							<div style="color: red; font-weight: 700;">
 								<span th:if="${#fields.hasErrors('cognome')}"
 									th:errors="*{cognome}"></span>
 							</div>
 						</div>
 						<div class="form-group">
-							<label>Nazione</label> <input type="text" name="nazione"
+							<label class = "titoletto">Nazione</label> <input type="text" name="nazione"
 								th:field="*{nazione}" class="form-control"
 								placeholder="Inserisci la nazione" />
-							<div>
+							<div style="color: red; font-weight: 700;">
 								<span th:if="${#fields.hasErrors('nazione')}"
 									th:errors="*{nazione}"></span>
 							</div>

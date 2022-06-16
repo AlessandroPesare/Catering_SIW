@@ -9,17 +9,17 @@
 	<section class=sezione-contenuto>
 		<div>
 			<div>
-				<h1>Insert New Buffet</h1>
+				<h1 class = "titolo">Insert New Buffet</h1>
 				<div>
 					<form th:action="@{/administration/buffets/}+${chef_id}"
 						th:object="${buffet}" method="POST">
-						<div th:if="${#fields.hasGlobalErrors()}"
+						<div style="color: red; font-weight: 700;" th:if="${#fields.hasGlobalErrors()}"
 							class="alert alert-danger" role="alert">
 							<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">Errore
 								globale</p>
 						</div>
 						<div>
-							<label>Nome</label> <input type="text" name="nome"
+							<label class = "titoletto">Nome</label> <input type="text" name="nome"
 								th:field="*{nome}" class="form-control"
 								placeholder="Inserisci il nome" />
 							<div style="color: red; font-weight: 700;">
@@ -28,7 +28,7 @@
 						</div>
 
 						<div class="form-group">
-							<label>Descrizione</label> <input type="text" name="descrizione"
+							<label class = "titoletto">Descrizione</label> <input type="text" name="descrizione"
 								th:field="*{descrizione}" class="form-control"
 								placeholder="Inserisci la descrizione" />
 							<div>

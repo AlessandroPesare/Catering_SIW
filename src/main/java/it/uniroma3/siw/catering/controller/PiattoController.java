@@ -49,6 +49,7 @@ public class PiattoController {
 		@GetMapping("info/piatto/{id}")
 		public String getSingoloPiatto(@PathVariable("id") Long id, Model model) {
 			model.addAttribute("piatto", this.piattoService.findById(id));
+			model.addAttribute("ingredienti",this.piattoService.getIngredientiOfPiatto(id));
 			return "info/piatto.html";
 		}
 		

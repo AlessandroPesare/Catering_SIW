@@ -41,6 +41,7 @@ public class BuffetController {
 	@GetMapping("info/buffet/{id}")
 	public String getSingoloBuffet(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("buffet", this.buffetService.findById(id));
+		model.addAttribute("piatti", this.buffetService.getPiattiOfBuffet(id));
 		return "info/buffet.html";
 	}
 /*
